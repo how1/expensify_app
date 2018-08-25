@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { DateRangePicker } from 'react-dates';
 import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from '../actions/filters';
+import ExpensesSummary from './ExpensesSummary';
 
 export class ExpenseListFilters extends React.Component {
 	state = {
@@ -27,6 +28,7 @@ export class ExpenseListFilters extends React.Component {
 	render() { 
 		return (
 			<div>
+				<ExpensesSummary />
 				<input 
 					type="text" 
 					value={this.props.filters.text} 
@@ -56,7 +58,10 @@ export class ExpenseListFilters extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-	filters: state.filters
+	filters: state.filters,
+	expenses: state.expenses,
+	expenseCount: state.expenseCount,
+	expensesTotal: state.expensesTotal
 });
 
 const mapDispatchToProps = (dispatch) => ({
