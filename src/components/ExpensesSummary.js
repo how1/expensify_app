@@ -6,9 +6,10 @@ import numeral from 'numeral';
 
 export class ExpensesSummary extends React.Component {
 	render() {
+		const formattedExpensesTotal = numeral(this.props.expensesTotal / 100).format('$0,0.00');
 		return (
 			<div>
-				<h1>Viewing {this.props.expenseCount} expense(s) totalling {this.props.expensesTotal}</h1>
+				<h1>Viewing {this.props.expenseCount} expense(s) totalling {formattedExpensesTotal}</h1>
 			</div>
 		);
 	};
