@@ -5,21 +5,22 @@ import { connect } from 'react-redux';
 import numeral from 'numeral';
 
 export class ExpensesSummary extends React.Component {
-	state = {
-		expenseCount: this.props.expenses.length,
-		expensesTotal: selectExpensesTotal(this.props.expenses)
-	}
 	render() {
 		return (
 			<div>
-				<h1>Viewing {this.state.expenseCount} expense(s) totalling {this.state.expensesTotal}</h1>
+				<h1>Viewing {this.props.expenseCount} expense(s) totalling {this.props.expensesTotal}</h1>
 			</div>
 		);
 	};
 };
 
-const mapStateToProps = (state) => ({
-	expenses: selectExpenses(state.expenses, state.filters)
-});
+const mapStateToProps = (state) => {
+	const expenses = selectExpenses(state.expenses, state.filters);
+	return {
+		expenses,
+		expenseCount: expenses.length,
+		expensesTotal: selectExpensesTotal(expenses)
+	};
+};
 
 export default connect(mapStateToProps)(ExpensesSummary);
