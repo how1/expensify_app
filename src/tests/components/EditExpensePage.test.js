@@ -3,18 +3,23 @@ import { shallow } from 'enzyme';
 import { EditExpensePage } from '../../components/EditExpensePage';
 import ExpenseForm from '../../components/ExpenseForm';
 import expenses from '../fixtures/expenses';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import database from '../../firebase/firebase';
 
-let editExpense, removeExpense, history, expense, wrapper;
+const createMockStore = configureMockStore([thunk]);
+
+let editExpense, startRemoveExpense, history, expense, wrapper;
 
 beforeEach(() => {
 	editExpense = jest.fn();
-	removeExpense = jest.fn();
+	startRemoveExpense = jest.fn();
 	history = { push: jest.fn() };
 	expense = expenses[1];
 	wrapper = shallow(
 		<EditExpensePage 
 			editExpense={editExpense} 
-			removeExpense={removeExpense} 
+			startRemoveExpense={startRemoveExpense} 
 			history={history}
 			expense={expense}
 		/>
@@ -36,6 +41,6 @@ test('should handle removeExpense', () => {
 	const id = expense.id;
 	wrapper.find('button').simulate('click');
 	expect(history.push).toHaveBeenLastCalledWith('/');
-	expect(removeExpense).toHaveBeenLastCalledWith({id});
+	expect(startRemoveExpense).toHaveBeenLastCalledWith({id});
 });
 
