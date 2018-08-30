@@ -41,6 +41,6 @@ test('should handle removeExpense', () => {
 	const id = expense.id;
 	wrapper.find('button').simulate('click');
 	expect(history.push).toHaveBeenLastCalledWith('/');
-	expect(startRemoveExpense).toHaveBeenLastCalledWith({id});
+	expect(startRemoveExpense).toHaveBeenLastCalledWith(id);
 });
 

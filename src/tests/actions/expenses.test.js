@@ -23,14 +23,14 @@ beforeEach((done) => {
 });
 
 test ('should set up remove expense action object', () => {
-	const action = removeExpense({id: '123abc'});
+	const action = removeExpense('123abc');
 	expect(action).toEqual({
 		type: 'REMOVE_EXPENSE',
 		id: '123abc'
 	});
 });
 
-test('should remove expenses from firebase', (done) => {
+test('should remove expense from firebase', (done) => {
 	const id = expenses[0].id;
 	const store = createMockStore({});
 	store.dispatch(startRemoveExpense(id)).then(() => {
@@ -42,7 +42,6 @@ test('should remove expenses from firebase', (done) => {
 		done();
 	});
 });
-
 
 test('should set up edit expense action object', ()=>{
 	const updates = {description: '1234', amount:'400'};
