@@ -39,3 +39,41 @@ export const editExpense = ({id, updates} = {}) => {
 		updates
 	};
 };
+
+export const setExpenses = (expenses) => ({
+	type: 'SET_EXPENSES',
+	expenses
+});
+
+export const startSetExpenses = () => {
+	return (dispatch) => {
+		const expenses = [];
+		return database.ref('expenses')
+		.once('value', (snapshot) => {
+			snapshot.forEach((childSnapshot) => {
+				expenses.push({
+					id: childSnapshot.key,
+					...childSnapshot.val()
+				});
+			})
+		})
+		.then(() => {
+			dispatch(setExpenses(expenses));
+		})
+		.catch((e) => {
+			console.log('something went wrong');
+		});
+	};
+	// const expenses = [];
+	// return database.ref('expenses')
+	// 	.once('value', (snapshot) => {
+	// 	snapshot.forEach((childSnapshot) => {
+	// 		expenses.push({
+	// 			id: childSnapshot.key,
+	// 			...childSnapshot.val()
+	// 		});
+	// 	});
+	// }).then(() => {
+	// 	dispatch(setExpenses(expenses));
+	// });
+};
