@@ -33,15 +33,11 @@ export const removeExpense = (id) => ({
 });
 
 export const startRemoveExpense = (id) => {
-	return (dispatch => {
-		return database.ref(`expenses/${id}`).set({})
-		.then(() => {
+	return dispatch => {
+		return database.ref(`expenses/${id}`).remove().then(() => {
 			dispatch(removeExpense(id));
-		})
-		.catch((e) => {
-			console.log('something went wrong', e);
-		})
-	});
+		});
+	};
 }
 
 // EDIT_EXPENSE
