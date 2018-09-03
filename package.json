@@ -29,7 +29,7 @@
     "firebase": "^5.4.1",
     "index.js": "0.0.3",
     "moment": "^2.22.2",
-    "node": "^10.7.0",
+    "node": "10.7.0",
     "node-sass": "^4.9.2",
     "normalize.css": "^8.0.0",
     "numeral": "^2.0.6",
