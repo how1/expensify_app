@@ -37,10 +37,10 @@ const mapStateToProps = (state) => {
 		expensesTotal: selectExpensesTotal(expenses),
 		hiddenExpenses,
 		hiddenExpenseCount: hiddenExpenses.length,
-		hiddenExpensesTotal: selectExpensesTotal(hiddenExpenses);
+		hiddenExpensesTotal: selectExpensesTotal(hiddenExpenses),
 		allExpenses,
 		allExpensesCount: allExpenses.count,
-		allExpensesTotal: selectExpensesTotal(allExpenses);
+		allExpensesTotal: selectExpensesTotal(allExpenses)
 	};
 };
 
