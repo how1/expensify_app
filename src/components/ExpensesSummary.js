@@ -14,8 +14,8 @@ export class ExpensesSummary extends React.Component {
 			<div className="page-header">
 				<div className="content-container">
 					<h1 className="page-header__title">Viewing <span>{this.props.expenseCount}</span> expense(s) totalling <span>{formattedExpensesTotal}</span></h1>
-					<h3 className="page-header__title">Hiding <span>{this.props.hiddenExpenseCount}</span> expense(s) totalling <span>{formattedHiddenExpensesTotal}</span></h1>
-					<h3 className="page-header__title">Totalling <span>{this.props.allExpensesCount}</span> expense(s) totalling <span>{formattedAllExpensesTotal}</span></h1>
+					<h3 className="page-header__title">Hiding <span>{this.props.hiddenExpenseCount}</span> expense(s) totalling <span>{formattedHiddenExpensesTotal}</span></h3>
+					<h3 className="page-header__title">Totalling <span>{this.props.allExpensesCount}</span> expense(s) totalling <span>{formattedAllExpensesTotal}</span></h3>
 					<div className="page-header__actions">
 						<Link className="button" to="/create">Add Expense</Link>
 					</div>
